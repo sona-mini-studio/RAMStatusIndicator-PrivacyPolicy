@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Pressure Indicator Privacy Policy (Loading...)</title>
+    <script>
+        // Function to get user's preferred language
+        function getPreferredLanguage() {
+            const supportedLanguages = ['en', 'zh_CN'];
+            
+            // Check browser language settings
+            const navLang = navigator.language || navigator.userLanguage;
+            const baseLang = navLang.split('-')[0].toLowerCase();
+            
+            // Check for zh-CN or zh-Hans variants
+            if (navLang.toLowerCase() === 'zh-cn' || 
+                navLang.toLowerCase() === 'zh-hans-cn' || 
+                navLang.toLowerCase() === 'zh-hans' ||
+                baseLang === 'zh') {
+                return 'zh-cn';
+            }
+            
+            // Check if base language is supported
+            if (supportedLanguages.includes(baseLang)) {
+                return baseLang;
+            }
+            
+            // Default to English
+            return 'en';
+        }
+        
+        // Redirect to appropriate language
+        window.onload = function() {
+            const lang = getPreferredLanguage();
+            window.location.href = lang + '/index.html';
+        };
+    </script>
+</head>
+<body>
+    <p>Loading...</p>
+</body>
+</html>
